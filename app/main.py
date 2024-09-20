@@ -22,7 +22,7 @@ class CarWashStation:
                 total_amount += self.calculate_washing_price(car)
                 self.wash_single_car(car)
             else:
-                print(f"\n{car.brand} - washing power - {car.clean_mark} NOT SUPPORTED AT THIS CarWashStation!")
+                print(f"\n{car.brand} - washing power - {car.clean_mark} NOT SUPPORTED THIS CarWashStation!")
         print(f"\nTotal bill - {total_amount}$")
         return total_amount
 
