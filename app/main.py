@@ -6,8 +6,13 @@ class Car:
 
 
 class CarWashStation:
-    def __init__(self, distance_from_city_center: float, clean_power: int,
-                 average_rating: float, count_of_ratings: int) -> None:
+    def __init__(
+        self,
+        distance_from_city_center: float,
+        clean_power: int,
+        average_rating: float,
+        count_of_ratings: int,
+    ) -> None:
         self.distance_from_city_center = distance_from_city_center
         self.clean_power = clean_power
         self.average_rating = average_rating
@@ -17,12 +22,18 @@ class CarWashStation:
         total_amount = 0
         for car in car_pack:
             if self.clean_power > car.clean_mark:
-                print(f"\nOur washing power {self.clean_power} - serving >{car.brand}<"
-                      f" with {car.clean_mark} lvl clean mark")
+                print(
+                    f"\nOur washing power {self.clean_power} - "
+                    f"serving >{car.brand}<"
+                    f" with {car.clean_mark} lvl clean mark"
+                )
                 total_amount += self.calculate_washing_price(car)
                 self.wash_single_car(car)
             else:
-                print(f"\n{car.brand} - washing power - {car.clean_mark} NOT SUPPORTED THIS CarWashStation!")
+                print(
+                    f"\n{car.brand} - washing power - "
+                    f"{car.clean_mark} NOT SUPPORTED THIS CarWashStation!"
+                )
         print(f"\nTotal bill - {total_amount}$")
         return total_amount
 
@@ -30,17 +41,26 @@ class CarWashStation:
         # print(f"{car.brand} bill - "
         #       f"{round(car.comfort_class * (self.clean_power - car.clean_mark)
         #                * (self.average_rating / self.distance_from_city_center), 1)}$$")
-        return round(car.comfort_class * (self.clean_power - car.clean_mark) *
-                     (self.average_rating / self.distance_from_city_center), 1)
+        return round(
+            car.comfort_class
+            * (self.clean_power - car.clean_mark)
+            * (self.average_rating / self.distance_from_city_center),
+            1,
+        )
 
     def wash_single_car(self, car: Car):
         print(f"Trying to wash {car.brand} with clean mark {car.clean_mark}.")
         if self.clean_power > car.clean_mark:
             car.clean_mark = self.clean_power
-            print(f"{car.brand} washed successfully. New clean mark: {car.clean_mark}.")
+            print(
+                f"{car.brand} washed successfully. "
+                f"New clean mark: {car.clean_mark}."
+            )
         else:
             print(
-                f"Cleaning power insufficient for {car.brand} with clean mark {car.clean_mark}. No changes made.")
+                f"Cleaning power insufficient for {car.brand} with clean mark "
+                f"{car.clean_mark}. No changes made."
+            )
         return car.clean_mark
 
     def rate_service(self, num: float) -> float:
@@ -49,7 +69,10 @@ class CarWashStation:
             self.count_of_ratings = 1
         else:
             self.average_rating = round(
-                (self.average_rating * self.count_of_ratings + num) / (self.count_of_ratings + 1), 1)
+                (self.average_rating * self.count_of_ratings + num)
+                / (self.count_of_ratings + 1),
+                1,
+            )
             self.count_of_ratings += 1
         print(f"Our new rating - {round(self.average_rating, 1)}")
         return self.average_rating
