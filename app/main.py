@@ -27,8 +27,9 @@ class CarWashStation:
         return total_amount
 
     def calculate_washing_price(self, car: Car) -> float:
-        print(f"{car.brand} bill - {round(car.comfort_class * (self.clean_power - car.clean_mark) *
-                                          (self.average_rating / self.distance_from_city_center), 1)}$$")
+        print(f"{car.brand} bill - "
+              f"{round(car.comfort_class * (self.clean_power - car.clean_mark)
+                       * (self.average_rating / self.distance_from_city_center), 1)}$$")
         return round(car.comfort_class * (self.clean_power - car.clean_mark) *
                      (self.average_rating / self.distance_from_city_center), 1)
 
