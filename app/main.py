@@ -1,5 +1,7 @@
 class Car:
-    def __init__(self, comfort_class: int, clean_mark: int, brand: str) -> None:
+    def __init__(
+            self, comfort_class: int, clean_mark: int, brand: str
+    ) -> None:
         self.comfort_class = comfort_class
         self.clean_mark = clean_mark
         self.brand = brand
@@ -38,9 +40,6 @@ class CarWashStation:
         return total_amount
 
     def calculate_washing_price(self, car: Car) -> float:
-        # print(f"{car.brand} bill - "
-        #       f"{round(car.comfort_class * (self.clean_power - car.clean_mark)
-        #                * (self.average_rating / self.distance_from_city_center), 1)}$$")
         return round(
             car.comfort_class
             * (self.clean_power - car.clean_mark)
@@ -49,16 +48,12 @@ class CarWashStation:
         )
 
     def wash_single_car(self, car: Car):
-        print(f"Trying to wash {car.brand} with clean mark {car.clean_mark}.")
         if self.clean_power > car.clean_mark:
             car.clean_mark = self.clean_power
-            print(
-                f"{car.brand} washed successfully. "
-                f"New clean mark: {car.clean_mark}."
-            )
         else:
             print(
-                f"Cleaning power insufficient for {car.brand} with clean mark "
+                f"Cleaning power insufficient for {car.brand} "
+                f"with clean mark "
                 f"{car.clean_mark}. No changes made."
             )
         return car.clean_mark
