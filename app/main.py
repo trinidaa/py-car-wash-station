@@ -47,7 +47,7 @@ class CarWashStation:
             1,
         )
 
-    def wash_single_car(self, car: Car):
+    def wash_single_car(self, car: Car) -> int:
         if self.clean_power > car.clean_mark:
             car.clean_mark = self.clean_power
         else:
